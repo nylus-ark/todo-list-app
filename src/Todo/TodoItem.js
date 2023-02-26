@@ -1,11 +1,10 @@
-export default function TodoItem({ todo, index }) {
+export default function TodoItem({ todo, index, onChange }) {
   const styles = {
     li: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      border: '3px solid transparent',
-      borderRadius: '8px',
+      borderTop: '1px solid #e8e8ed',
       marginBottom: '5px',
       padding: '10px',
       transition: 'background-color .2s cubic-bezier(.32,.08,.24,1)',
@@ -13,18 +12,27 @@ export default function TodoItem({ todo, index }) {
     input: {
       marginRight: '10px',
     },
-    strong: {
-      marginRight: '5px',
-    },
   };
+
+  const classes = [];
+
+  if (todo.complited) {
+    classes.push('done');
+  }
 
   return (
     <li style={styles.li}>
-      <span>
-        <input type="checkbox" style={styles.input} />
+      <span className={classes.join(' ')}>
+        <input 
+          type="checkbox" 
+          checked={todo.complited}
+          style={styles.input} 
+          onChange={() => onChange(todo.id)}
+        />
         <strong style={styles.strong}>
           {index + 1}
         </strong>
+        &nbsp;
         {todo.title}
       </span>
 

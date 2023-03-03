@@ -1,3 +1,6 @@
+import React, { useContext } from 'react';
+import Context from '../context';
+
 export default function TodoItem({ todo, index, onChange }) {
   const styles = {
     li: {
@@ -13,6 +16,8 @@ export default function TodoItem({ todo, index, onChange }) {
       marginRight: '10px',
     },
   };
+
+  const { removeTodo } = useContext(Context);
 
   const classes = [];
 
@@ -36,7 +41,10 @@ export default function TodoItem({ todo, index, onChange }) {
         {todo.title}
       </span>
 
-      <button type="button">
+      <button 
+        type="button" 
+        className="btn-close" 
+        onClick={removeTodo.bind(null, todo.id)}>
         &times;
       </button>
     </li>

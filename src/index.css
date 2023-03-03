@@ -39,3 +39,11 @@ h2 {
 .done {
   text-decoration: line-through;
 }
+
+.btn-close {
+  background-color: transparent;
+  border: 1px solid red;
+  border-radius: 50%;
+  color: red;
+  font-size: 15px;
+}

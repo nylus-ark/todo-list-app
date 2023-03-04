@@ -31,7 +31,11 @@ function App() {
         <div className="container">
           <h1 className="title-h1">To-Do List</h1>
 
-          <TodoList todos={todoData} onToggle={toggleTodo} />
+          {todoData.length ? (
+            <TodoList todos={todoData} onToggle={toggleTodo}/>
+          ) : (
+            <p className='text'>You have no todos...</p>
+          )}
         </div>
       </div>
     </Context.Provider>

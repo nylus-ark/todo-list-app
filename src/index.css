@@ -47,3 +47,7 @@ h2 {
   color: red;
   font-size: 15px;
 }
+
+.text {
+  padding: 0 13px;
+}

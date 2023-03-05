@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import TodoList from './Todo/TodoList';
 import Context from './context';
 import AddTodo from './Todo/AddTodo';
+import Loader from './Loader';
 
 function App() {
   const [todoData, setTodoData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
@@ -12,6 +14,7 @@ function App() {
       .then((todoData) => {
         setTimeout(() => {
           setTodoData(todoData);
+          setLoading(false);
         }, 2000);
       })
   }, []);
@@ -52,10 +55,12 @@ function App() {
 
           <AddTodo onCreate={addTodo} />
 
+          {loading && <Loader />}
+
           {todoData.length ? (
             <TodoList todos={todoData} onToggle={toggleTodo}/>
-          ) : (
-            <p className='text'>You have no todos...</p>
+          ) : loading ? null : (
+            <p className="text">You have no todos...</p>
           )}
         </div>
       </div>

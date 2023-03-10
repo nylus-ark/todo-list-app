@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import TodoList from './Todo/TodoList';
 import Context from './context';
-import AddTodo from './Todo/AddTodo';
 import Loader from './Loader';
+
+const AddTodo = React.lazy(() => import('./Todo/AddTodo'));
 
 function App() {
   const [todoData, setTodoData] = useState([]);

@@ -5,4 +5,4 @@ export default () => (
     <div style={{ display: 'flex', justifyContent: 'center', margin: '50px' }}>
         <div className="lds-dual-ring" />
     </div>
-)
+);

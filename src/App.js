@@ -52,17 +52,21 @@ function App() {
     <Context.Provider value={{ removeTodo }}>
       <div className="wrapper">
         <div className="container">
-          <h1 className="title-h1">To-Do List</h1>
+          <div className="container__header">
+            <h1 className="title-h1">To-Do List</h1>
+          </div>
+          
+          <div className="container__content">
+            <AddTodo onCreate={addTodo} />
 
-          <AddTodo onCreate={addTodo} />
+            {loading && <Loader />}
 
-          {loading && <Loader />}
-
-          {todoData.length ? (
-            <TodoList todos={todoData} onToggle={toggleTodo}/>
-          ) : loading ? null : (
-            <p className="text">You have no todos...</p>
-          )}
+            {todoData.length ? (
+              <TodoList todos={todoData} onToggle={toggleTodo}/>
+            ) : loading ? null : (
+              <p className="text">You have no todos...</p>
+            )}
+          </div>
         </div>
       </div>
     </Context.Provider>

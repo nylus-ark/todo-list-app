@@ -7,6 +7,9 @@ export default function TodoList(props) {
       listStyle: 'none',
       margin: 0,
       padding: 0,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '5px',
     },
   };
 
